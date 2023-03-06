@@ -16,44 +16,10 @@ logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.DEBUG)
 
 # Keep in sync with pyproject.toml
 CYTHON_VERSION_MIN = "0.29.30"
-
 SLURM_RELEASE = "22.5"
 PYSLURM_PATCH_RELEASE = "1"
 SLURM_SHARED_LIB = "libslurm.so"
 CURRENT_DIR = pathlib.Path(__file__).parent
-
-metadata = dict(
-    name="pyslurm",
-    version=SLURM_RELEASE + "." + PYSLURM_PATCH_RELEASE,
-    license="GPLv2",
-    description="Python Interface for Slurm",
-    long_description=(CURRENT_DIR / "README.md").read_text(),
-    author="Mark Roberts, Giovanni Torres, et al.",
-    author_email="pyslurm@googlegroups.com",
-    url="https://github.com/PySlurm/pyslurm",
-    platforms=["Linux"],
-    keywords=["HPC", "Batch Scheduler", "Resource Manager", "Slurm", "Cython"],
-    packages=["pyslurm"],
-    classifiers=[
-        "Development Status :: 5 - Production/Stable",
-        "Environment :: Console",
-        "Intended Audience :: Developers",
-        "Intended Audience :: System Administrators",
-        "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
-        "Natural Language :: English",
-        "Operating System :: POSIX :: Linux",
-        "Programming Language :: Cython",
-        "Programming Language :: Python",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
-        "Topic :: Software Development :: Libraries",
-        "Topic :: Software Development :: Libraries :: Python Modules",
-        "Topic :: System :: Distributed Computing",
-    ],
-)
 
 class PySlurmConfig():
 
@@ -62,6 +28,10 @@ class PySlurmConfig():
         self.slurm_lib = "/usr/lib64"
         self.slurm_inc = "/usr/include"
         self.slurm_inc_full = "/usr/include/slurm"
+
+metadata = dict(
+    version=SLURM_RELEASE + "." + PYSLURM_PATCH_RELEASE
+)
 
 config = PySlurmConfig()
 

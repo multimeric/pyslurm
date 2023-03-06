@@ -14,8 +14,7 @@
 import sys
 import os
 from datetime import datetime
-
-from pyslurm import __version__
+from importlib import metadata
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -33,6 +32,7 @@ needs_sphinx = '1.1'
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = [
+    "sphinx_multiversion",
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.doctest',
@@ -61,7 +61,7 @@ copyright = '%s, PySlurm Developers' % datetime.now().year
 # built documents.
 #
 # The short X.Y version.
-version = __version__
+version = metadata.version("pyslurm")
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -144,7 +144,11 @@ html_last_updated_fmt = '%b %d, %Y'
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-#html_sidebars = {}
+html_sidebars = {
+    '**': [
+        'versioning.html',
+    ],
+}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
